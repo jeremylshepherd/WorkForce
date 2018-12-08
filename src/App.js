@@ -11,6 +11,7 @@ import firebase from 'firebase';
 import reducers from './reducers';
 import config from './config/firebase';
 import LoginForm from './components/LoginForm';
+import { Header } from './components/Elements';
 
 export default class App extends Component {
 
@@ -22,7 +23,10 @@ export default class App extends Component {
     return (
       <Provider store={createStore(reducers)}>
         <View style={styles.container}>
+        <Header text="Employee Manager" />
+        <View style={styles.body}>
           <LoginForm />
+        </View>
         </View>
       </Provider>
     );
@@ -32,9 +36,15 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  body: {
+    flex: 14,
+    width: '100%',
+    alignItems: 'stretch',
+    justifyContent: 'center'
   },
   welcome: {
     fontSize: 20,

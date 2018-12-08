@@ -24,9 +24,10 @@ const FormInput = ({ label, value, onChangeText, secure, inputStyle, labelStyle,
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        width: '100%',
         flexDirection: 'row',
         justifyContent: 'flex-start',
-        alignItems: 'center',
+        alignItems: 'flex-end',
         padding: 20,
         paddingLeft: 5,
         paddingRight: 4
