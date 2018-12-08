@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 
 // create a component
-const FormInput = ({ label, value, onChangeText, secure, inputStyle, labelStyle, keyboard, placeholder}) => {
+const FormInput = ({ label, value, onChangeText, secure, inputStyle, labelStyle, keyboard, placeholder, ...rest}) => {
     return (
         <View style={styles.container}>
             <Text style={{...styles.label, ...labelStyle}}>{label}</Text>
@@ -15,6 +15,7 @@ const FormInput = ({ label, value, onChangeText, secure, inputStyle, labelStyle,
                 secureTextEntry={secure}
                 autoCorrect={false}
                 keyboardType={!keyboard ? 'default': keyboard}
+                {...rest}
             />
         </View>
     );

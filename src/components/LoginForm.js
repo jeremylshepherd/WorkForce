@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 import { KeyboardAvoidingView, StyleSheet, Text } from 'react-native';
+import { connect } from 'react-redux';
+import { emailChanged, passwordChanged } from '../actions'
 import { Button, Card, FormInput, CardSection } from './Elements';
 import { sanFranciscoWeights } from 'react-native-typography';
 
-export default class LoginForm extends Component {
+class LoginForm extends Component {
+
+    onEmailChange(text) {
+        this.props.emailChanged(text);
+    }
+
+    onPasswordChange(text) {
+        this.props.passwordChanged(text);
+    }
+
     render() {
         return (
             <KeyboardAvoidingView 
@@ -18,11 +29,16 @@ export default class LoginForm extends Component {
                             label="EMAIL"
                             labelStyle={styles.label}
                             inputStyle={styles.input}
+                            onChangeText={this.onEmailChange.bind(this)}
+                            value={this.props.email}
+                            autoCapitalize="none"
                         />
                         <FormInput 
                             label="PASSWORD" 
                             labelStyle={styles.label}
                             inputStyle={styles.input}
+                            onChangeText={this.onPasswordChange.bind(this)}
+                            value={this.props.password}
                             secure
                         />
                     </CardSection>
@@ -62,3 +78,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#eee',
     }
 });
+
+const mapStateToProps = state => {
+    return {
+        email: state.auth.email,
+        password: state.auth.password
+    }
+}
+
+export default connect(mapStateToProps, { emailChanged, passwordChanged })(LoginForm);
