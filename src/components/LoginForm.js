@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { KeyboardAvoidingView, StyleSheet, Text } from 'react-native';
+import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
-import { emailChanged, passwordChanged } from '../actions'
-import { Button, Card, FormInput, CardSection } from './Elements';
+import { emailChanged, passwordChanged, loginUser } from '../actions'
+import { Button, Card, FormInput, CardSection, Spinner } from './Elements';
 import { sanFranciscoWeights } from 'react-native-typography';
 
 class LoginForm extends Component {
@@ -13,6 +13,39 @@ class LoginForm extends Component {
 
     onPasswordChange(text) {
         this.props.passwordChanged(text);
+    }
+
+    onButtonPress() {
+        const { email, password } = this.props;
+        this.props.loginUser({email, password});
+    }
+
+    renderError() {
+        if(this.props.error){
+            return (
+                <View style={styles.errorView}>
+                    <Text style={styles.errorText}>{this.props.error}</Text>
+                </View>
+            )
+        }
+    }
+
+    renderButton() {
+        if(this.props.loading) {
+            return <Spinner />
+        }else{
+             return (
+                 <Button
+                    containerStyle={{ backgroundColor: '#ccc', color: 'darkslategrey' }}
+                    buttonTextStyle={{...sanFranciscoWeights.heavy, fontSize: 32, marginRight: 5, color: 'darkslategrey' }}
+                    buttonText="SUBMIT"
+                    iconName="first-order"
+                    iconColor="darkslategrey"
+                    iconSize={32}
+                    onPress={this.onButtonPress.bind(this)}
+                />
+             );
+        }
     }
 
     render() {
@@ -42,15 +75,9 @@ class LoginForm extends Component {
                             secure
                         />
                     </CardSection>
+                    {this.renderError()}
                     <CardSection>
-                        <Button
-                            containerStyle={{ backgroundColor: '#ccc', color: 'darkslategrey' }}
-                            buttonTextStyle={{...sanFranciscoWeights.heavy, fontSize: 32, marginRight: 5, color: 'darkslategrey' }}
-                            buttonText="SUBMIT"
-                            iconName="first-order"
-                            iconColor="darkslategrey"
-                            iconSize={32}
-                        />
+                        {this.renderButton()}
                     </CardSection>
                 </Card>
             </KeyboardAvoidingView>
@@ -76,14 +103,31 @@ const styles = StyleSheet.create({
     },
     input: {
         backgroundColor: '#eee',
+    },
+    errorView: {
+        backgroundColor: 'red'
+    },
+    errorText: {
+        color: 'white',
+        fontSize: 20,
+        alignSelf: 'center'
     }
 });
 
-const mapStateToProps = ({ email, password }) => {
+const mapStateToProps = ({ auth }) => {
+    const { email, password, error, loading } = auth;
     return {
         email,
-        password
+        password,
+        error,
+        loading
     }
 }
 
-export default connect(mapStateToProps, { emailChanged, passwordChanged })(LoginForm);
+export default connect(mapStateToProps, 
+    { 
+        emailChanged, 
+        passwordChanged,
+        loginUser
+    }
+ )(LoginForm);
