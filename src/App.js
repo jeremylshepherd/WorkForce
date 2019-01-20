@@ -13,6 +13,7 @@ import reducers from './reducers';
 import config from './config/firebase';
 import LoginForm from './components/LoginForm';
 import { Header } from './components/Elements';
+import Router from './Router';
 
 export default class App extends Component {
 
@@ -24,12 +25,7 @@ export default class App extends Component {
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
     return (
       <Provider store={store}>
-        <View style={styles.container}>
-        <Header text="Employee Manager" />
-        <View style={styles.body}>
-          <LoginForm />
-        </View>
-        </View>
+        <Router />
       </Provider>
     );
   }

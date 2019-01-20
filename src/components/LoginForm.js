@@ -50,9 +50,7 @@ class LoginForm extends Component {
 
     render() {
         return (
-            <KeyboardAvoidingView 
-                behavior="position" 
-                style={{flex:1, justifyContent: 'center'}}>
+            <View>
                 <Card>                
                     <CardSection>
                         <Text style={styles.header}>LOGIN</Text>
@@ -80,7 +78,7 @@ class LoginForm extends Component {
                         {this.renderButton()}
                     </CardSection>
                 </Card>
-            </KeyboardAvoidingView>
+            </View>
         );
     }
 }
