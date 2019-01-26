@@ -3,9 +3,14 @@ import { sanFranciscoWeights } from 'react-native-typography';
 import { Card, CardSection, FormInput as Input, Button } from './Elements';
 import { Picker, Text, View } from 'react-native';
 import { connect } from 'react-redux';
-import { employeeUpdate } from '../actions';
+import { employeeUpdate, employeeCreate } from '../actions';
 
 class EmployeeCreate extends Component {
+
+    onButtonPress() {
+        const { name, phone, shift } = this.props;
+        this.props.employeeCreate({ name, phone, shift: shift || 'Sunday' });
+    }
 
     renderDays() {
         const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -47,10 +52,11 @@ class EmployeeCreate extends Component {
                         <Button
                             containerStyle={{ backgroundColor: '#ccc', color: 'darkslategrey' }}
                             buttonTextStyle={{...sanFranciscoWeights.heavy, fontSize: 32, marginRight: 5, color: 'darkslategrey' }}
-                            buttonText="SAVE"
-                            iconName="rebel"
+                            buttonText="CREATE"
+                            iconName="jedi-order"
                             iconColor="darkslategrey"
                             iconSize={32}
+                            onPress={this.onButtonPress.bind(this)}
                         />
                     </CardSection>
                 </Card>
@@ -64,4 +70,7 @@ const mapStateToProps = state => {
     return { name, phone, shift };
 }
 
-export default connect(mapStateToProps, { employeeUpdate })(EmployeeCreate);
+export default connect(mapStateToProps, { 
+    employeeUpdate,
+    employeeCreate
+})(EmployeeCreate);
