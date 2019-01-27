@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, TouchableHighlight, TouchableWithoutFeedback } from 'react-native';
 import { CardSection } from './Elements';
 import { Actions } from 'react-native-router-flux';
+import { sanFranciscoWeights } from 'react-native-typography';
 
 class ListItem extends Component {
 
@@ -16,7 +17,7 @@ class ListItem extends Component {
             <TouchableWithoutFeedback onPress={this.onItemPress.bind(this)}>
                 <View>
                     <CardSection>
-                        <Text style={{ fontSize: 20 }}>{name}</Text>
+                        <Text style={{ ...sanFranciscoWeights.bold, fontSize: 20, padding: 20 }}>{name}</Text>
                     </CardSection>
                 </View>
             </TouchableWithoutFeedback>

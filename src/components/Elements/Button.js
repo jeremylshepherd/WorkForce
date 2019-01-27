@@ -4,8 +4,8 @@ import { Text, StyleSheet, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 // create a component
-const Button = ({ onPress, containerStyle, buttonTextStyle, buttonText, iconColor, iconName, iconSize}) => (
-    <TouchableOpacity onPress={onPress} style={{...styles.container, ...containerStyle}}>
+const Button = ({ onPress, containerStyle, buttonTextStyle, buttonText, iconColor, iconName, iconSize, disable }) => (
+    <TouchableOpacity onPress={onPress} style={{...styles.container, ...containerStyle}} disabled={disable}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}> 
             <Text style={buttonTextStyle}>{buttonText}</Text>
             {iconName !== undefined 

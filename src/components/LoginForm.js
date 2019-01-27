@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { emailChanged, passwordChanged, loginUser } from '../actions'
-import { Button, Card, FormInput, CardSection, Spinner } from './Elements';
+import { AnimatedInput as Input, Button, Card, FormInput, CardSection, Spinner } from './Elements';
 import { sanFranciscoWeights } from 'react-native-typography';
 
 class LoginForm extends Component {
@@ -56,21 +56,21 @@ class LoginForm extends Component {
                         <Text style={styles.header}>LOGIN</Text>
                     </CardSection>
                     <CardSection style={{ flexDirection: 'column', justifyContent: 'space-around', alignItems: 'stretch', ...styles.form }}>
-                        <FormInput 
+                        <Input 
                             label="EMAIL"
                             labelStyle={styles.label}
-                            inputStyle={styles.input}
+                            keyboardType="email-address"
                             onChangeText={this.onEmailChange.bind(this)}
                             value={this.props.email}
                             autoCapitalize="none"
                         />
-                        <FormInput 
+                        <Input 
                             label="PASSWORD" 
                             labelStyle={styles.label}
-                            inputStyle={styles.input}
                             onChangeText={this.onPasswordChange.bind(this)}
                             value={this.props.password}
-                            secure
+                            autoCapitalize="none"
+                            secureTextEntry
                         />
                     </CardSection>
                     {this.renderError()}
@@ -93,14 +93,10 @@ const styles = StyleSheet.create({
     },
     label: {
         ...sanFranciscoWeights.bold,
-        fontSize: 16,
         color: 'darkslategrey'
     },
     form: {
         height: 180
-    },
-    input: {
-        backgroundColor: '#eee',
     },
     errorView: {
         backgroundColor: 'red'

@@ -27,6 +27,7 @@ class EmployeeCreate extends Component {
                             iconColor="darkslategrey"
                             iconSize={32}
                             onPress={this.onButtonPress.bind(this)}
+                            disable={ !this.props.name || !this.props.phone }
                         />
                     </CardSection>
                 </Card>
