@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Keyboard, KeyboardAvoidingView, Picker, Text, TouchableWithoutFeedback, View } from 'react-native';
-import { CardSection, AnimatedInput as Input, DismisKeyboard } from './Elements';
+import { CardSection, AnimatedInput as Input, DismissKeyboard } from './Elements';
 import { sanFranciscoWeights } from 'react-native-typography';
 
 const EmployeeForm = (props) => {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     return (
-        <DismisKeyboard>
+        <DismissKeyboard>
             <KeyboardAvoidingView behavior="padding" containerStyle={{ flex: 1, backgroundColor: 'pink', alignItems: 'center', justifyContent: 'space-around' }}>            
                 <CardSection style={{ flexDirection: 'column', justifyContent: 'space-around', alignItems: 'stretch', ...styles.form }}>
                     <Input
@@ -41,7 +41,7 @@ const EmployeeForm = (props) => {
                     </Picker>                
                 </CardSection>
             </KeyboardAvoidingView>
-        </DismisKeyboard>
+        </DismissKeyboard>
     );
 };
 

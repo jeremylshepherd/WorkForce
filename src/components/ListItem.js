@@ -3,6 +3,7 @@ import { View, Text, TouchableHighlight, TouchableWithoutFeedback } from 'react-
 import { CardSection } from './Elements';
 import { Actions } from 'react-native-router-flux';
 import { sanFranciscoWeights } from 'react-native-typography';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 class ListItem extends Component {
 
@@ -14,13 +15,19 @@ class ListItem extends Component {
     render() {
         const { name } = this.props;
         return (
-            <TouchableWithoutFeedback onPress={this.onItemPress.bind(this)}>
+            <TouchableHighlight 
+                onPress={this.onItemPress.bind(this)} 
+                underlayColor="#d5dbdc"
+            >
                 <View>
                     <CardSection>
-                        <Text style={{ ...sanFranciscoWeights.bold, fontSize: 20, padding: 20 }}>{name}</Text>
+                        <View style={{ padding: 20, flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
+                            <Icon name="sith" color="#2d3436" size={24}/>
+                            <Text style={{ ...sanFranciscoWeights.bold, fontSize: 20, color: "#2d3436", paddingLeft: 5 }}>{name}</Text>
+                        </View>                        
                     </CardSection>
                 </View>
-            </TouchableWithoutFeedback>
+            </TouchableHighlight>
         );
     }
 }

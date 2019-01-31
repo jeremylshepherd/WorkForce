@@ -6,9 +6,9 @@ import { sanFranciscoWeights } from 'react-native-typography';
 
 // create a component
 const Header = props => (
-    <View style={styles.container}>
+    <View style={{...styles.container, ...props.ContainerStyle}}>
         <Text 
-            style={{ ...styles.banner, ...sanFranciscoWeights.black }}
+            style={{ ...sanFranciscoWeights.black, ...styles.banner, ...props.TitleStyle }}
         >
             {props.text}
         </Text>

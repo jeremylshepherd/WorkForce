@@ -1,11 +1,14 @@
 import React from 'react';
 import { Keyboard, TouchableWithoutFeedback } from 'react-native';
 
-const DismisKeyboard = ({ children }) => {
+const DismissKeyboard = ({ children, style }) => {
     return (
-        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <TouchableWithoutFeedback
+            style={{ ...style }}
+            onPress={() => Keyboard.dismiss()}
+        >
             {children}
         </TouchableWithoutFeedback>
     );
 };
-export { DismisKeyboard };
+export { DismissKeyboard };

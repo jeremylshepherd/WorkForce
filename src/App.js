@@ -4,15 +4,14 @@
  */
 
 import React, { Component } from 'react';
-import { StyleSheet, Text, View}  from 'react-native';
+import { StatusBar, StyleSheet, Text, View}  from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import firebase from 'firebase';
 import ReduxThunk from 'redux-thunk';
 import reducers from './reducers';
 import config from './config/firebase';
-import LoginForm from './components/LoginForm';
-import { Header } from './components/Elements';
+import SplashScreen from 'react-native-splash-screen';
 import Router from './Router';
 
 export default class App extends Component {
@@ -21,10 +20,15 @@ export default class App extends Component {
     firebase.initializeApp(config);
   }
 
+  componentDidMount() {
+    SplashScreen.hide();
+  }
+
   render() {
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
     return (
       <Provider store={store}>
+      <StatusBar backgroundColor="#2d3436" barStyle="light-content" />
         <Router />
       </Provider>
     );

@@ -36,7 +36,7 @@ class LoginForm extends Component {
         }else{
              return (
                  <Button
-                    containerStyle={{ backgroundColor: '#ccc', color: 'darkslategrey' }}
+                    containerStyle={{ backgroundColor: '#bac3c5', color: 'darkslategrey' }}
                     buttonTextStyle={{...sanFranciscoWeights.heavy, fontSize: 32, marginRight: 5, color: 'darkslategrey' }}
                     buttonText="SUBMIT"
                     iconName="first-order"
@@ -52,9 +52,6 @@ class LoginForm extends Component {
         return (
             <View>
                 <Card>                
-                    <CardSection>
-                        <Text style={styles.header}>LOGIN</Text>
-                    </CardSection>
                     <CardSection style={{ flexDirection: 'column', justifyContent: 'space-around', alignItems: 'stretch', ...styles.form }}>
                         <Input 
                             label="EMAIL"

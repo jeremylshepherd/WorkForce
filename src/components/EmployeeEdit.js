@@ -51,7 +51,7 @@ class EmployeeEdit extends Component {
     render() {
         return (
             <View>
-                <Card containerStyle={{ flex: 1, backgroundColor: 'pink', alignItems: 'center', justifyContent: 'space-around' }}>
+                <Card containerStyle={{ flex: 1, alignItems: 'center', justifyContent: 'space-around' }}>
                     <EmployeeForm {...this.props} />
                     <CardSection>
                         <Button
@@ -91,7 +91,7 @@ class EmployeeEdit extends Component {
                         onAccept={this.destroyEmployee.bind(this)}
                         onDecline={this.hideModal.bind(this)}
                     >
-                        Are you sure you want to destroy employee record?
+                        Destroy this Apprentice?
                     </Confirm>
                 </Card>
             </View>
@@ -101,7 +101,7 @@ class EmployeeEdit extends Component {
 
 const styles = {
     cont: { 
-        backgroundColor: '#ccc'
+        backgroundColor: '#bac3c5'
     },
     buttonText: {
         ...sanFranciscoWeights.heavy, 

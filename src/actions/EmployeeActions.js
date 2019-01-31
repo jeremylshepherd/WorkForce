@@ -3,7 +3,8 @@ import { Actions } from 'react-native-router-flux';
 import { 
     EMPLOYEE_UPDATE, 
     EMPLOYEE_FORM_RESET,
-    EMPLOYEES_FETCH_SUCCESS
+    EMPLOYEES_FETCH_SUCCESS,
+    LOGOUT_USER
 } from './types';
 
 export const employeeUpdate = ({ prop, value }) => {
@@ -60,7 +61,10 @@ export const employeesFetch = () => {
                 dispatch({ 
                     type: EMPLOYEES_FETCH_SUCCESS,
                     payload: snapshot.val()
-                })
+                });
+                dispatch({
+                    type: EMPLOYEE_FORM_RESET
+                });
             });
     };
 };
