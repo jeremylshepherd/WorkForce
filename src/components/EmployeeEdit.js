@@ -29,7 +29,7 @@ class EmployeeEdit extends Component {
 
     sendSMS() {
         const { phone, shift, name } = this.props;
-        const message = `Hello ${name},\nJust a friendly reminder that your next shift is on ${shift}. Look forward to seeing you then.
+        const message = `${name}, my young apprentice. \nA reminder that your next training is on ${shift}. I will see you then.\n- The Emperor
         `;
         Communications.text(phone, message);
     }
